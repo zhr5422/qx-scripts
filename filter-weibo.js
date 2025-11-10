@@ -4,6 +4,10 @@ Quantumult X Script
 */
 
 let body = $response.body;
+// 1) 字符串哨兵：若无“广告”标记，直接返回
+  if (!body.includes('"adType":"广告"')) {
+    return $done({}); // 不改 body，减少 parse 开销
+  }
 if (body) {
   try {
     let json = JSON.parse(body);
