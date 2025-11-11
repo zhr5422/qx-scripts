@@ -5,7 +5,7 @@ Quantumult X Script
 
 let body = $response.body;
 // 1) 字符串哨兵：若无“广告”标记，直接返回
-  if (!body.includes('"adType":"广告"')) {
+  if (!body.includes('"adType"')) {
     return $done({}); // 不改 body，减少 parse 开销
   }
 if (body) {
@@ -14,7 +14,7 @@ if (body) {
 
     // 若 datas 存在且为数组
     if (Array.isArray(json.datas)) {
-      json.datas = json.datas.filter(item => !(item.type === 1 && item.adType === '广告'));
+      json.datas = json.datas.filter(item => item.type === 0);
     }
 
     body = JSON.stringify(json);
