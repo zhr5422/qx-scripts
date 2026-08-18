@@ -11,7 +11,7 @@ try {
       "commonGoodsShelf"
     )
   ) {
-    obj.data.modules.commonGoodsShelf = null;
+    obj.data.modules.commonGoodsShelf = {};
   }
 
   body = JSON.stringify(obj);
