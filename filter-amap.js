@@ -10,7 +10,8 @@ try {
     "quickLinksPortal",
     "surroundHouseTab",
     "poiDetailWaterFeed",
-    "poiDetailWaterFeedTitle"
+    "poiDetailWaterFeedTitle",
+    "houseAgentService"
   ].forEach(key => {
     if (modules?.[key] !== undefined) {
       modules[key] = {};
