@@ -1,18 +1,21 @@
 let body = $response.body;
 
 try {
-  let obj = JSON.parse(body);
+  const obj = JSON.parse(body);
+  const modules = obj?.data?.modules;
 
-  if (
-    obj.data &&
-    obj.data.modules &&
-    Object.prototype.hasOwnProperty.call(
-      obj.data.modules,
-      "commonGoodsShelf"
-    )
-  ) {
-    obj.data.modules.commonGoodsShelf = {};
-  }
+  [
+    "commonGoodsShelf",
+    "nearbyRecommendModule",
+    "quickLinksPortal",
+    "surroundHouseTab",
+    "poiDetailWaterFeed",
+    "poiDetailWaterFeedTitle"
+  ].forEach(key => {
+    if (modules?.[key] !== undefined) {
+      modules[key] = {};
+    }
+  });
 
   body = JSON.stringify(obj);
 } catch (e) {
